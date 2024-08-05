@@ -1,6 +1,5 @@
 // логіка додатку
 
-
 import { getImage } from "./js/pixabay-api";
 // getImage("cat").then((data) => { console.log(data) }).catch((error) => { console.log(error) });
 
@@ -9,8 +8,8 @@ import "izitoast/dist/css/iziToast.min.css"
 
 import {
     markupImages,
-    showLoader,
-    hideLoader
+    // showLoader,
+    // hideLoader
 } from "./js/render-functions";
 
 export const refs = { input: document.querySelector('.form-input'),
@@ -19,6 +18,8 @@ btn: document.querySelector('.search-btn'),
     picturesList: document.querySelector('.gallery-list'),
 loader: document.querySelector('.loader')
 };
+function showLoader() { refs.loader.classList.remove('hidden'); }
+function hideLoader() { refs.loader.classList.add('hidden'); }
 refs.searchForm.addEventListener('submit', e => {
     e.preventDefault();
     const photosName = refs.input.value.trim();
@@ -42,11 +43,11 @@ refs.searchForm.addEventListener('submit', e => {
             })
             return;
         }
-        hideLoader();
+        // hideLoader()
         markupImages(hits);
         resetForm();
 
-    }).catch(error => { console.log(error); });
+    }).finally(() => hideLoader());
     
     
 
