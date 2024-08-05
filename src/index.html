@@ -9,13 +9,24 @@
   </head>
   <body>
     <!-- <load ="partials/header.html" /> -->
+
     <div class="block">
-      <form class="form-inline search-form js-binance-form">
-        <div class="form-group">
-          <input type="text" class="form-control" name="query" placeholder="Search images" />
-        </div>
+      <form class="search-form">
+        <!-- <div class="form-group"> -->
+        <input
+          type="text"
+          class="form-input"
+          name="query"
+          placeholder="Search images"
+        />
+        <!-- </div> -->
         <button type="submit" class="btn search-btn">Search</button>
       </form>
+    </div>
+    <span class="loader hidden"></span>
+    <ul class="gallery-list"></ul>
+    <!-- Loads the specified .html file -->
+    <!-- <load ="partials/vite-promo.html" /> -->
 
     <script type="module" src="./main.js"></script>
   </body>
