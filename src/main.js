@@ -47,6 +47,11 @@ refs.searchForm.addEventListener('submit', e => {
         markupImages(hits);
         resetForm();
 
+    }).catch((err) => {
+        iziToast.error({
+            position: "topRight",
+            message: `${err}`,
+        })
     }).finally(() => hideLoader());
     
     

@@ -3,14 +3,13 @@
 import { refs } from "../main";
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
-
-
-
-export function markupImages(images) { 
-  const lightbox = new SimpleLightbox('.gallery-list li', {
+const lightbox = new SimpleLightbox('.gallery-list a', {
     captionsData: 'alt',
     captionsDelay: 250,
 });
+
+
+export function markupImages(images) { 
     const markup = images.map(image => {
         return `<li class="gallery-item">
       <a href='${image.largeImageURL}' class="gallery-link">
@@ -28,15 +27,8 @@ export function markupImages(images) {
       </div>
     </li>`;
     }).join('');
-  refs.picturesList.innerHTML = markup;
+  refs.picturesList.insertAdjacentHTML('beforeend', markup);
   lightbox.refresh();
-    if (lightbox) { lightbox.refresh(); }
-    else {
-        lightbox = new SimpleLightbox('.gallery-list li', {
-            captionsData: 'alt',
-        captionsDelay: 250})
-    }
+ 
 }
 
-// export function showLoader() { refs.loader.classList.remove('hidden'); }
-// export function hideLoader() { refs.loader.classList.add('hidden'); }
